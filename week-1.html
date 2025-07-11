@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Magic with JavaScript! - Week-1</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom right, #f0f4f8, #e2e8f0); /* Subtle gradient background */
+            color: #334155; /* Dark slate text */
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* More rounded corners */
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+        }
+        h1, h2, h3 {
+            color: #1e293b; /* Darker blue-gray for headings */
+            font-weight: 700; /* Bolder headings */
+        }
+        h1 {
+            font-size: 2.8rem; /* Larger main title */
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #0d9488; /* Teal for main title */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Subtle text shadow */
+        }
+        h2 {
+            font-size: 2rem; /* Larger section titles */
+            border-bottom: 3px solid #cbd5e1; /* Thicker border */
+            padding-bottom: 0.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+            color: #1a56db; /* A nice blue for section titles */
+        }
+        h3 {
+            font-size: 1.4rem; /* Larger subheadings */
+            margin-top: 1.75rem;
+            margin-bottom: 0.85rem;
+            color: #2d3748; /* Slightly darker grey for subheadings */
+        }
+        .section-card {
+            background-color: #f8fafc; /* Lighter background for sections */
+            border-radius: 1rem; /* More rounded corners */
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Soft shadow for cards */
+        }
+        .code-block {
+            background-color: #1e293b; /* Dark background for code */
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 0.75rem; /* More rounded */
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Monaco', 'Consolas', 'monospace';
+            font-size: 0.95rem; /* Slightly larger font */
+            line-height: 1.5;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .code-editor-container {
+            background-color: #e0f2fe; /* Very light blue for editor area */
+            border: 1px solid #93c5fd;
+            border-radius: 1rem; /* More rounded */
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Inner shadow for depth */
+        }
+        textarea {
+            width: 100%;
+            min-height: 180px; /* Taller editor */
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.75rem; /* More rounded */
+            padding: 1rem;
+            font-family: 'Fira Code', 'Monaco', 'Consolas', 'monospace';
+            font-size: 1rem; /* Larger font */
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3); /* Stronger focus ring */
+        }
+        .run-button {
+            background: linear-gradient(to right, #3b82f6, #2563eb); /* Gradient button */
+            color: white;
+            padding: 0.8rem 1.5rem; /* Larger padding */
+            border-radius: 0.75rem; /* More rounded */
+            border: none;
+            cursor: pointer;
+            font-weight: 600; /* Bolder text */
+            transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+            margin-top: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .run-button:hover {
+            background: linear-gradient(to right, #2563eb, #1d4ed8); /* Darker gradient on hover */
+            transform: translateY(-2px); /* More pronounced lift */
+            box-shadow: 0 6px 8px -2px rgba(0, 0, 0, 0.15), 0 3px 5px -2px rgba(0, 0, 0, 0.08);
+        }
+        .run-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+        }
+        .output-area {
+            background-color: #e0f7fa; /* Lighter blue for output */
+            border: 1px solid #67e8f9; /* Cyan border */
+            border-radius: 0.75rem; /* More rounded */
+            padding: 1rem;
+            margin-top: 1rem;
+            min-height: 60px; /* Taller output */
+            font-family: 'Fira Code', 'Monaco', 'Consolas', 'monospace';
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: #083344; /* Darker cyan text for output */
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Subtle inner shadow */
+        }
+        .output-error {
+            background-color: #fee2e2; /* Light red for errors */
+            border-color: #f87171; /* Red border */
+            color: #dc2626;
+        }
+        .question-list li {
+            margin-bottom: 0.5rem;
+            list-style-type: disc;
+            margin-left: 1.5rem; /* More indent */
+        }
+        .note {
+            background-color: #dbeafe; /* Light blue for notes */
+            border-left: 5px solid #60a5fa; /* Thicker border */
+            padding: 1rem;
+            border-radius: 0.75rem; /* More rounded */
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            color: #1e40af;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Soft shadow */
+        }
+        .challenge-hint {
+            background-color: #fffbeb; /* Light yellow for hints */
+            border-left: 4px solid #fcd34d;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            color: #92400e;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="container">
+        <h1>✨ Web Magic with JavaScript! ✨</h1>
+        <p class="text-center text-xl mb-8 text-gray-600">Welcome, future web developers! Get ready to make your webpages come alive with the power of JavaScript. In this class, we'll dive into the "brain" of the webpage and learn how to make things interactive and exciting!</p>
+         <h2>Developed by Teacher Theo</h2>
+        <!-- Welcome & Warm-Up -->
+        <div class="section-card">
+            <h2>🧭 Welcome & Warm-Up</h2>
+            <p class="text-gray-700 mb-4">Let's kick things off with a quick recap and a peek into what we'll be doing today.</p>
+            <h3 class="text-gray-800">Question Time:</h3>
+            <ul class="question-list text-gray-700">
+                <li><span class="font-medium">What is HTML for?</span> (Hint: Think about the structure of a webpage.)</li>
+                <li><span class="font-medium">What is CSS for?</span> (Hint: How does your webpage look?)</li>
+                <li>And now for the big question: <span class="font-medium">What do you think JavaScript does for a webpage?</span></li>
+            </ul>
+            <p class="text-gray-600 mt-4 italic">*(We'll show you a working webpage with an interactive button to spark your imagination!)*</p>
+        </div>
+
+        <!-- What is JavaScript? -->
+        <div class="section-card">
+            <h2>🔹 What is JavaScript?</h2>
+            <div class="note">
+                <h3 class="font-semibold text-lg mb-2">Background Note:</h3>
+                <p>Imagine your webpage is like a robot.</p>
+                <ul class="list-disc ml-5 mt-2">
+                    <li><strong>HTML</strong> gives the robot its body – its arms, legs, head, etc. (the structure).</li>
+                    <li><strong>CSS</strong> dresses the robot up – giving it cool colors, shiny parts, and maybe even a hat! (the style).</li>
+                    <li>But what makes the robot do things? What makes it walk, talk, or play a game? That's <strong>JavaScript</strong>!</li>
+                </ul>
+            </div>
+            <p class="text-gray-700 mb-4"><strong>JavaScript (JS)</strong> is like the <strong>"brain of the webpage."</strong> It makes things *happen*. It's what allows for:</p>
+            <ul class="list-disc ml-5 text-gray-700 mb-4">
+                <li>Interactive buttons</li>
+                <li>Games</li>
+                <li>Animations</li>
+                <li>Pop-up messages</li>
+                <li>And so much more!</li>
+            </ul>
+
+            <h3 class="text-gray-800">Adding JavaScript to Your HTML</h3>
+            <p class="text-gray-700 mb-2">To tell your HTML file to run JavaScript, you use the <strong><code>&lt;script&gt;</code></strong> tag. You can put this tag almost anywhere in your HTML, but for now, we'll put it just before the closing <code>&lt;/body&gt;</code> tag so you can see it easily.</p>
+            <div class="code-block">
+                &lt;body&gt;<br>
+                &nbsp;&nbsp;&lt;h1&gt;My Awesome Webpage&lt;/h1&gt;<br><br>
+                &nbsp;&nbsp;&lt;script&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Your JavaScript code will go here!<br>
+                &nbsp;&nbsp;&lt;/script&gt;<br><br>
+                &lt;/body&gt;
+            </div>
+
+            <h3 class="text-gray-800">Let's Make Some Noise! (`alert()` and `console.log()`)</h3>
+            <p class="text-gray-700 mb-2">Two of the simplest ways to see JavaScript in action are <strong><code>alert()</code></strong> and <strong><code>console.log()</code></strong>.</p>
+            <ul class="list-disc ml-5 text-gray-700 mb-4">
+                <li><strong><code>alert("Your message here!")</code></strong>: This creates a pop-up window in the browser with your message. It's great for getting immediate attention!</li>
+                <li><strong><code>console.log("Your message here!")</code></strong>: This sends a message to the "console" in your browser's developer tools. It's super useful for checking what your code is doing behind the scenes, without annoying your users with pop-ups.</li>
+            </ul>
+
+            <h3 class="text-gray-800">Step-by-Step Tutorial: Seeing JavaScript in Action</h3>
+            <p class="text-gray-700 mb-2">1.  <strong>Type your JavaScript code here:</strong> In the editor below, type the <code>alert()</code> and <code>console.log()</code> lines.</p>
+
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your JavaScript Code:</h4>
+                <textarea id="editor1" class="w-full min-h-[150px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+alert("Hello from JavaScript!");
+console.log("This message is in the console.");
+                </textarea>
+                <button class="run-button" onclick="runCode('editor1', 'output1')">Run Code</button>
+                <div id="output1" class="output-area"></div>
+                <p class="text-gray-600 text-sm mt-2">*(After running, click "OK" on the alert. For <code>console.log</code> output, check the box below. In a real browser, you'd open your browser's developer console (F12) to see it!)*</p>
+            </div>
+        </div>
+
+        <!-- Hands-On Practice #1 -->
+        <div class="section-card">
+            <h2>🔹 Hands-On Practice #1</h2>
+            <p class="text-gray-700 mb-4">Now that you've seen basic JavaScript, let's make something happen when *you* interact with the webpage! We're going to create a button that, when clicked, runs some JavaScript code.</p>
+
+            <h3 class="text-gray-800">The `onclick` Attribute and Functions</h3>
+            <p class="text-gray-700 mb-2">HTML elements, like buttons, can have special attributes that listen for events. One very common event is <strong><code>onclick</code></strong>. When you click an element with an <code>onclick</code> attribute, the JavaScript code inside that attribute will run!</p>
+            <p class="text-gray-700 mb-2">We'll also introduce a <strong><code>function</code></strong>. A function is like a mini-program or a set of instructions that you can name and then run whenever you want.</p>
+            <div class="code-block">
+                &lt;button onclick="sayHi()"&gt;Click Me!&lt;/button&gt;
+            </div>
+            <p class="text-gray-700">Here, <code>sayHi</code> is the name of our function. The code inside the curly braces <code>{}</code> is what happens when <code>sayHi()</code> is called.</p>
+
+            <h3 class="text-gray-800">Step-by-Step Tutorial: Making Buttons Interactive</h3>
+            <p class="text-gray-700 mb-2">1.  <strong>Clear your previous code</strong> in the editor below.</p>
+            <p class="text-gray-700 mb-2">2.  <strong>Add the JavaScript Function:</strong> Type the <code>sayHi</code> function into the editor.</p>
+
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your JavaScript Function:</h4>
+                <textarea id="editor2" class="w-full min-h-[250px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+function sayHi() {
+  alert("You clicked the button!");
+  console.log("Button was clicked!");
+}
+// To make a button call this function in a real HTML file, you would add:
+// <button onclick="sayHi()">Click Me!</button>
+// to your HTML body.
+                </textarea>
+                <button class="run-button" onclick="runCode('editor2', 'output2')">Run Code</button>
+                <div id="output2" class="output-area"></div>
+                <p class="text-gray-600 text-sm mt-2">*(Running this code will define the function. To see the alert/console log, you'd need to manually call `sayHi()` in the editor after running, or integrate it with an HTML button in a separate file.)*</p>
+            </div>
+
+            <h3 class="text-gray-800 mt-4">Student Task:</h3>
+            <p class="text-gray-700 mb-2">Now it's your turn to customize!</p>
+            <ul class="question-list text-gray-700">
+                <li><span class="font-medium">Customize the Alert:</span> Change the <code>alert()</code> message to include your name. For example: <code>alert("Hello, [Your Name], you clicked the button!");</code></li>
+                <li><span class="font-medium">Add a Second Function:</span> Create another JavaScript function (e.g., <code>sayGoodbye()</code>) in the editor.
+                    <ul class="list-disc ml-5 mt-1">
+                        <li>Inside <code>sayGoodbye()</code>, make it <code>console.log()</code> a different message. For example: <code>"Goodbye! Thanks for clicking."</code></li>
+                        <li>*(Remember: To make a button call this, you'd add: <code>&lt;button onclick="sayGoodbye()"&gt;Goodbye!&lt;/button&gt;</code> to your HTML.)*</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Hands-On Practice #2 -->
+        <div class="section-card">
+            <h2>🔹 Hands-On Practice #2 – Let’s Personalize It!</h2>
+            <p class="text-gray-700 mb-4">So far, our JavaScript has been pretty set in stone. What if we want to get information *from* the user? That's where <strong><code>prompt()</code></strong> comes in!</p>
+            <ul class="list-disc ml-5 text-gray-700 mb-4">
+                <li><strong><code>prompt("Your question here?")</code></strong>: This creates a pop-up window that asks the user a question and allows them to type in an answer. The answer they type is then stored in a "variable."</li>
+            </ul>
+
+            <h3 class="text-gray-800">What's a "Variable"?</h3>
+            <p class="text-gray-700 mb-2">Think of a <strong>variable</strong> as a named box where you can store information. You give the box a name (like <code>name</code> or <code>age</code>), and then you can put different things inside it.</p>
+            <p class="text-gray-700 mb-2">In JavaScript, you create a variable using <strong><code>let</code></strong> (or <code>const</code> or <code>var</code>, but <code>let</code> is a good starting point):</p>
+            <div class="code-block">
+                let myBox = "Hello!"; // Now, myBox contains the text "Hello!"
+            </div>
+
+            <h3 class="text-gray-800">Step-by-Step Tutorial: Getting User Input</h3>
+            <p class="text-gray-700 mb-2">1.  <strong>Clear your editor</strong> again.</p>
+            <p class="text-gray-700 mb-2">2.  <strong>Add the JavaScript Function:</strong> Copy the <code>greetUser</code> function below into the editor.</p>
+
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your JavaScript Function:</h4>
+                <textarea id="editor3" class="w-full min-h-[250px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+function greetUser() {
+  let name = prompt("What is your name?"); // Asks the user for their name and stores it in the 'name' variable
+  alert("Hello, " + name + "!"); // Uses the stored name in an alert
+  console.log("User greeted: " + name); // Logs the greeting to the console
+}
+// To make a button call this function in a real HTML file, you would add:
+// <button onclick="greetUser()">Greet Me!</button>
+// to your HTML body.
+                </textarea>
+                <button class="run-button" onclick="runCode('editor3', 'output3')">Run Code</button>
+                <div id="output3" class="output-area"></div>
+                <p class="text-gray-600 text-sm mt-2">
+                    *(<span class="font-semibold">Explanation:</span> Notice the <code>+</code> signs. In JavaScript, the <code>+</code> sign can be used to "add" text together (this is called <strong>concatenation</strong>). So <code>"Hello, " + name + "!"</code> combines the text "Hello, ", whatever the user typed for <code>name</code>, and "!" into one complete message.)*
+                </p>
+            </div>
+            <p class="text-gray-700 mt-4 mb-2"><strong>Run and Interact!</strong> Click the "Run Code" button. When the prompt appears, type your name and press Enter/OK. See the personalized alert and check your console output!</p>
+        </div>
+
+        <!-- Mini Project -->
+        <div class="section-card">
+            <h2>🔹 Mini Project: “Web Welcome App”</h2>
+            <p class="text-gray-700 mb-4">Now it's time to put everything you've learned together! You're going to build your own "Web Welcome App."</p>
+
+            <h3 class="text-gray-800">Project Goal:</h3>
+            <p class="text-gray-700 mb-2">Create a webpage that:</p>
+            <ul class="question-list text-gray-700">
+                <li><strong>Greets the user by name</strong> using the <code>prompt()</code> and <code>alert()</code> functions.</li>
+                <li><strong>Logs that greeting</strong> to the console using <code>console.log()</code>.</li>
+                <li>Uses <strong>at least two buttons</strong>, each doing something different with JavaScript. (One could be your greeting button, the other could be your "say goodbye" button from earlier, or something new!)</li>
+            </ul>
+
+            <h3 class="text-gray-800 mt-4">Creative Challenge (Optional):</h3>
+            <ul class="question-list text-gray-700">
+                <li>Can you add some CSS to make your webpage look colorful or interesting?</li>
+                <li>Can you think of another simple JavaScript action you could add? (Hint: What if a button changed the text of a heading on the page? This is a bit more advanced, but you can try to look it up!)</li>
+            </ul>
+            <p class="text-gray-600 mt-4 italic">*(For this project, you'll combine all the HTML and JavaScript you've learned. You'll need to create a full HTML file on your computer using a text editor like VS Code, or use a comprehensive online IDE. The editors above are for practicing JavaScript snippets!)*</p>
+        </div>
+
+        <!-- New Challenges Section -->
+        <div class="section-card">
+            <h2>🚀 JavaScript Challenges!</h2>
+            <p class="text-gray-700 mb-4">Ready for some extra fun? Here are four challenges to test your new JavaScript skills!</p>
+
+            <!-- Challenge 1: Dynamic Message Changer -->
+            <h3 class="text-gray-800">Challenge 1: Dynamic Message Changer</h3>
+            <p class="text-gray-700 mb-2">Can you make a button that changes the text of a specific part of your webpage?</p>
+            <ul class="question-list text-gray-700">
+                <li>Imagine you have an HTML element like: <code>&lt;p id="message"&gt;Hello World!&lt;/p&gt;</code></li>
+                <li>Your task is to write a JavaScript function that, when called, changes the text inside this <code>&lt;p&gt;</code> tag to something new, like "JavaScript is Awesome!".</li>
+            </ul>
+            <div class="challenge-hint">
+                <p class="font-semibold">Hint:</p>
+                <p>You'll need to use <code>document.getElementById('your-id-here')</code> to find the HTML element, and then change its <code>.innerText</code> property.</p>
+            </div>
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 1:</h4>
+                <textarea id="challenge1_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+// HTML part (imagine this is in your HTML body):
+// <p id="dynamicMessage">Change me!</p>
+// <button onclick="changeText()">Change Text</button>
+
+function changeText() {
+  // Your code here!
+  // Example: document.getElementById('dynamicMessage').innerText = "New message!";
+}
+                </textarea>
+                <button class="run-button" onclick="runChallengeCode('challenge1_editor', 'challenge1_output', 'dynamicMessage')">Run Code</button>
+                <div id="challenge1_output" class="output-area"></div>
+                <p class="text-gray-600 text-sm mt-2">*(To see this in action, you'd need an actual HTML paragraph with `id="dynamicMessage"` and a button calling `changeText()` in your full HTML file. This editor will just run the JS function.)*</p>
+            </div>
+
+            <!-- Challenge 2: Simple Calculator (Addition) -->
+            <h3 class="text-gray-800 mt-8">Challenge 2: Simple Calculator (Addition)</h3>
+            <p class="text-gray-700 mb-2">Let's build a mini-calculator that adds two numbers!</p>
+            <ul class="question-list text-gray-700">
+                <li>Write a JavaScript function that:</li>
+                <li>Uses <code>prompt()</code> twice to ask the user for two numbers.</li>
+                <li>Adds these two numbers together.</li>
+                <li>Uses <code>alert()</code> to show the sum to the user.</li>
+                <li>Uses <code>console.log()</code> to also print the sum.</li>
+            </ul>
+            <div class="challenge-hint">
+                <p class="font-semibold">Hint:</p>
+                <p>Remember that <code>prompt()</code> always returns text! You'll need to convert the text numbers into actual numbers using <code>parseInt()</code> or <code>Number()</code> before adding them. Example: <code>let num1 = parseInt(prompt("Enter first number:"));</code></p>
+            </div>
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 2:</h4>
+                <textarea id="challenge2_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+function addNumbers() {
+  // Your code here!
+  // Example: let num1 = parseInt(prompt("Enter first number:"));
+  // let num2 = parseInt(prompt("Enter second number:"));
+  // let sum = num1 + num2;
+  // alert("The sum is: " + sum);
+  // console.log("Sum: " + sum);
+}
+                </textarea>
+                <button class="run-button" onclick="runCode('challenge2_editor', 'challenge2_output')">Run Code</button>
+                <div id="challenge2_output" class="output-area"></div>
+            </div>
+
+            <!-- Challenge 3: Background Color Changer -->
+            <h3 class="text-gray-800 mt-8">Challenge 3: Background Color Changer</h3>
+            <p class="text-gray-700 mb-2">Make buttons that change the background color of the entire page!</p>
+            <ul class="question-list text-gray-700">
+                <li>Write a JavaScript function for each color (e.g., <code>makeBlue()</code>, <code>makeGreen()</code>).</li>
+                <li>Inside each function, change the <code>document.body.style.backgroundColor</code> to a different color (e.g., "lightblue", "lightgreen", "pink").</li>
+            </ul>
+            <div class="challenge-hint">
+                <p class="font-semibold">Hint:</p>
+                <p>The <code>document.body</code> refers to the entire <code>&lt;body&gt;</code> of your HTML page. You can set its style properties directly, like: <code>document.body.style.backgroundColor = "red";</code></p>
+            </div>
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 3:</h4>
+                <textarea id="challenge3_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+// HTML part (imagine these are in your HTML body):
+// <button onclick="makeBlue()">Blue Page</button>
+// <button onclick="makeGreen()">Green Page</button>
+
+function makeBlue() {
+  // Your code here!
+  // Example: document.body.style.backgroundColor = "lightblue";
+}
+
+function makeGreen() {
+  // Your code here!
+}
+                </textarea>
+                <button class="run-button" onclick="runCode('challenge3_editor', 'challenge3_output')">Run Code</button>
+                <div id="challenge3_output" class="output-area"></div>
+                <p class="text-gray-600 text-sm mt-2">*(This editor will define the functions. To see the background change, you'd need to manually call `makeBlue()` or `makeGreen()` in the editor after running, or integrate it with HTML buttons in a separate file.)*</p>
+            </div>
+
+            <!-- Challenge 4: Secret Message Decoder -->
+            <h3 class="text-gray-800 mt-8">Challenge 4: Secret Message Decoder</h3>
+            <p class="text-gray-700 mb-2">Create a secret message that only appears if the user knows the correct code!</p>
+            <ul class="question-list text-gray-700">
+                <li>Write a JavaScript function that:</li>
+                <li>Uses <code>prompt()</code> to ask the user for a "secret code".</li>
+                <li>If the entered code is exactly "MAGIC", then <code>console.log()</code> a secret message (e.g., "You found the treasure!").</li>
+                <li>Otherwise (if the code is wrong), <code>console.log()</code> "Access Denied!".</li>
+            </ul>
+            <div class="challenge-hint">
+                <p class="font-semibold">Hint:</p>
+                <p>You'll need an <strong><code>if</code> statement</strong> to check if the code is correct. Example: <code>if (userCode === "MAGIC") { ... } else { ... }</code></p>
+            </div>
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 4:</h4>
+                <textarea id="challenge4_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+function decodeMessage() {
+  let userCode = prompt("Enter the secret code:");
+  // Your if/else statement here!
+  // Example:
+  // if (userCode === "MAGIC") {
+  //   console.log("You found the treasure!");
+  // } else {
+  //   console.log("Access Denied!");
+  // }
+}
+                </textarea>
+                <button class="run-button" onclick="runCode('challenge4_editor', 'challenge4_output')">Run Code</button>
+                <div id="challenge4_output" class="output-area"></div>
+            </div>
+        </div>
+        <!-- End New Challenges Section -->
+
+
+        <!-- Sharing & Feedback -->
+        <div class="section-card">
+            <h2>🔹 Sharing & Feedback</h2>
+            <p class="text-gray-700 mb-4">Let's see the amazing "Web Welcome Apps" and challenges you've built!</p>
+            <ul class="list-disc ml-5 text-gray-700 mb-4">
+                <li>Volunteers, please share your screen or the link to your project.</li>
+                <li>We'll celebrate everyone's efforts and creativity!</li>
+            </ul>
+
+            <h3 class="text-gray-800">Discussion Time:</h3>
+            <ul class="question-list text-gray-700">
+                <li>What did you enjoy most about today's class?</li>
+                <li>What was the most challenging part?</li>
+                <li>What new JavaScript magic would you like to learn next?</li>
+            </ul>
+        </div>
+
+        <!-- Wrap-Up Quiz -->
+        <div class="section-card">
+            <h2>🔹 Wrap-Up Quiz</h2>
+            <p class="text-gray-700 mb-4">Quick review to solidify your new JavaScript super-powers!</p>
+            <ul class="question-list text-gray-700">
+                <li>What does the <code>alert()</code> function do?</li>
+                <li>What happens when you click a button that has an <code>onclick</code> attribute in JavaScript?</li>
+                <li>What HTML tag do we use to write JavaScript code directly inside our HTML file?</li>
+                <li>What is a "variable" in JavaScript, and what keyword do we use to create one (for example)?</li>
+                <li>Why might you use <code>console.log()</code> instead of <code>alert()</code>?</li>
+            </ul>
+        </div>
+
+        <!-- Materials Needed -->
+        <div class="section-card">
+            <h2>🧰 Materials Needed for Next Time:</h2>
+            <ul class="list-disc ml-5 text-gray-700">
+                <li>Computer/laptop</li>
+                <li>Browser (Chrome, Firefox, Edge, Safari)</li>
+                <li>A text editor (like VS Code, Notepad++, Sublime Text) for creating full HTML files.</li>
+            </ul>
+        </div>
+
+        <p class="text-center text-gray-600 mt-8">I hope you had fun bringing your webpages to life with JavaScript! What was your favorite part of learning about web magic today?</p>
+    </div>
+
+    <script>
+        // Function to run code from the textarea and display output
+        function runCode(editorId, outputId) {
+            const code = document.getElementById(editorId).value;
+            const outputArea = document.getElementById(outputId);
+            outputArea.innerHTML = ''; // Clear previous output
+            outputArea.classList.remove('output-error'); // Remove error styling
+
+            // Store original console.log and console.error
+            const originalConsoleLog = console.log;
+            const originalConsoleError = console.error;
+
+            // Override console.log to capture output
+            console.log = (...args) => {
+                outputArea.innerHTML += args.map(arg => typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)).join(' ') + '\n';
+                originalConsoleLog(...args); // Also log to the actual browser console
+            };
+            // Override console.error to capture output
+            console.error = (...args) => {
+                outputArea.innerHTML += '<span style="color: red;">ERROR: ' + args.map(arg => typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)).join(' ') + '</span>\n';
+                outputArea.classList.add('output-error');
+                originalConsoleError(...args); // Also log to the actual browser console
+            };
+
+            try {
+                // IMPORTANT: Using eval() for educational purposes. In production,
+                // consider safer alternatives like Web Workers or sandboxed iframes
+                // if running user-provided code.
+                eval(code);
+                if (outputArea.innerHTML === '') {
+                    outputArea.innerHTML = 'Code executed successfully. Check for alerts or console output.';
+                }
+            } catch (error) {
+                outputArea.innerHTML = `<span class="text-red-600">Error: ${error.message}</span>`;
+                outputArea.classList.add('output-error');
+                console.error("Code execution error:", error); // Log to real console
+            } finally {
+                // Restore original console.log and console.error
+                console.log = originalConsoleLog;
+                console.error = originalConsoleError;
+            }
+        }
+
+        // Specific function for Challenge 1 to simulate HTML element presence
+        function runChallengeCode(editorId, outputId, targetElementId) {
+            const code = document.getElementById(editorId).value;
+            const outputArea = document.getElementById(outputId);
+            outputArea.innerHTML = '';
+            outputArea.classList.remove('output-error');
+
+            // Simulate the presence of the target HTML element for Challenge 1
+            let simulatedElement = document.getElementById(targetElementId);
+            if (!simulatedElement) {
+                simulatedElement = document.createElement('p');
+                simulatedElement.id = targetElementId;
+                simulatedElement.innerText = "Original text for challenge!";
+                // Append it temporarily to the output area's parent for visual debugging
+                // In a real scenario, this would be part of the main HTML structure
+                outputArea.parentNode.insertBefore(simulatedElement, outputArea);
+                outputArea.innerHTML += `(Simulated HTML element with id="${targetElementId}" added for testing. Original text: "${simulatedElement.innerText}")\n`;
+            } else {
+                // Reset text if element already exists from previous run
+                simulatedElement.innerText = "Original text for challenge!";
+                outputArea.innerHTML += `(Using existing simulated HTML element with id="${targetElementId}". Original text: "${simulatedElement.innerText}")\n`;
+            }
+
+
+            const originalConsoleLog = console.log;
+            const originalConsoleError = console.error;
+
+            console.log = (...args) => {
+                outputArea.innerHTML += args.map(arg => typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)).join(' ') + '\n';
+                originalConsoleLog(...args);
+            };
+            console.error = (...args) => {
+                outputArea.innerHTML += '<span style="color: red;">ERROR: ' + args.map(arg => typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)).join(' ') + '</span>\n';
+                outputArea.classList.add('output-error');
+                originalConsoleError(...args);
+            };
+
+            try {
+                eval(code);
+                // After eval, if the function exists, call it to demonstrate the effect
+                if (typeof changeText === 'function') { // Assuming the function name for challenge 1 is changeText
+                    changeText();
+                    outputArea.innerHTML += `\n(Simulated element text after function call: "${simulatedElement.innerText}")`;
+                } else {
+                    outputArea.innerHTML += `\n(No 'changeText' function found to call. Please define it in the editor.)`;
+                }
+                if (outputArea.innerHTML === '') {
+                    outputArea.innerHTML = 'Code executed successfully. Check for alerts or console output.';
+                }
+            } catch (error) {
+                outputArea.innerHTML = `<span class="text-red-600">Error: ${error.message}</span>`;
+                outputArea.classList.add('output-error');
+                console.error("Code execution error:", error);
+            } finally {
+                console.log = originalConsoleLog;
+                console.error = originalConsoleError;
+            }
+        }
+    </script>
+</body>
+</html>
