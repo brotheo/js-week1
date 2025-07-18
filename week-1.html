@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Magic with JavaScript! - Week 1: Basics</title>
+    <title>Binbin's JavaScript Adventure! - Combined Lessons</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
@@ -11,103 +11,103 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(to bottom right, #f0f4f8, #e2e8f0); /* Subtle gradient background */
-            color: #334155; /* Dark slate text */
-            padding: 1rem; /* Added padding to body for overall spacing */
+            background: linear-gradient(to bottom right, #f0f4f8, #e2e8f0);
+            color: #334155;
+            padding: 1rem;
         }
         .container {
             max-width: 900px;
             margin: 2rem auto;
             padding: 1.5rem;
             background-color: #ffffff;
-            border-radius: 1.5rem; /* More rounded corners */
-            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); /* Stronger shadow */
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
         h1, h2, h3 {
-            color: #1e293b; /* Darker blue-gray for headings */
-            font-weight: 700; /* Bolder headings */
+            color: #1e293b;
+            font-weight: 700;
         }
         h1 {
-            font-size: 2.8rem; /* Larger main title */
+            font-size: 2.8rem;
             text-align: center;
             margin-bottom: 2rem;
-            color: #0d9488; /* Teal for main title */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Subtle text shadow */
+            color: #0d9488;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
         h2 {
-            font-size: 2rem; /* Larger section titles */
-            border-bottom: 3px solid #cbd5e1; /* Thicker border */
+            font-size: 2rem;
+            border-bottom: 3px solid #cbd5e1;
             padding-bottom: 0.75rem;
             margin-top: 2.5rem;
             margin-bottom: 1.25rem;
-            color: #1a56db; /* A nice blue for section titles */
+            color: #1a56db;
         }
         h3 {
-            font-size: 1.4rem; /* Larger subheadings */
+            font-size: 1.4rem;
             margin-top: 1.75rem;
             margin-bottom: 0.85rem;
-            color: #2d3748; /* Slightly darker grey for subheadings */
+            color: #2d3748;
         }
         .section-card {
-            background-color: #f8fafc; /* Lighter background for sections */
-            border-radius: 1rem; /* More rounded corners */
+            background-color: #f8fafc;
+            border-radius: 1rem;
             padding: 1.5rem;
             margin-bottom: 2rem;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); /* Soft shadow for cards */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
         }
         .code-block {
-            background-color: #1e293b; /* Dark background for code */
+            background-color: #1e293b;
             color: #e2e8f0;
             padding: 1.25rem;
-            border-radius: 0.75rem; /* More rounded */
+            border-radius: 0.75rem;
             overflow-x: auto;
             font-family: 'Fira Code', 'Monaco', 'Consolas', 'monospace';
-            font-size: 0.95rem; /* Slightly larger font */
+            font-size: 0.95rem;
             line-height: 1.5;
             margin-top: 1rem;
             margin-bottom: 1rem;
         }
         .code-editor-container {
-            background-color: #e0f2fe; /* Very light blue for editor area */
+            background-color: #e0f2fe;
             border: 1px solid #93c5fd;
-            border-radius: 1rem; /* More rounded */
+            border-radius: 1rem;
             padding: 1.25rem;
             margin-top: 1.5rem;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Inner shadow for depth */
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
         textarea {
             width: 100%;
-            min-height: 180px; /* Taller editor */
+            min-height: 180px;
             background-color: #ffffff;
             border: 1px solid #cbd5e1;
-            border-radius: 0.75rem; /* More rounded */
+            border-radius: 0.75rem;
             padding: 1rem;
             font-family: 'Fira Code', 'Monaco', 'Consolas', 'monospace';
-            font-size: 1rem; /* Larger font */
+            font-size: 1rem;
             resize: vertical;
             outline: none;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         textarea:focus {
             border-color: #3b82f6;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3); /* Stronger focus ring */
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
         }
         .run-button {
-            background: linear-gradient(to right, #3b82f6, #2563eb); /* Gradient button */
+            background: linear-gradient(to right, #3b82f6, #2563eb);
             color: white;
-            padding: 0.8rem 1.5rem; /* Larger padding */
-            border-radius: 0.75rem; /* More rounded */
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.75rem;
             border: none;
             cursor: pointer;
-            font-weight: 600; /* Bolder text */
+            font-weight: 600;
             transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
             margin-top: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         .run-button:hover {
-            background: linear-gradient(to right, #2563eb, #1d4ed8); /* Darker gradient on hover */
-            transform: translateY(-2px); /* More pronounced lift */
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            transform: translateY(-2px);
             box-shadow: 0 6px 8px -2px rgba(0, 0, 0, 0.15), 0 3px 5px -2px rgba(0, 0, 0, 0.08);
         }
         .run-button:active {
@@ -115,88 +115,121 @@
             box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
         }
         .output-area {
-            background-color: #e0f7fa; /* Lighter blue for output */
-            border: 1px solid #67e8f9; /* Cyan border */
-            border-radius: 0.75rem; /* More rounded */
+            background-color: #e0f7fa;
+            border: 1px solid #67e8f9;
+            border-radius: 0.75rem;
             padding: 1rem;
             margin-top: 1rem;
-            min-height: 60px; /* Taller output */
+            min-height: 60px;
             font-family: 'Fira Code', 'Monaco', 'Consolas', 'monospace';
             font-size: 0.9rem;
             white-space: pre-wrap;
             word-break: break-all;
-            color: #083344; /* Darker cyan text for output */
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Subtle inner shadow */
+            color: #083344;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
         }
         .output-error {
-            background-color: #fee2e2; /* Light red for errors */
-            border-color: #f87171; /* Red border */
+            background-color: #fee2e2;
+            border-color: #f87171;
             color: #dc2626;
         }
         .question-list li {
             margin-bottom: 0.5rem;
             list-style-type: disc;
-            margin-left: 1.5rem; /* More indent */
+            margin-left: 1.5rem;
         }
         .note {
-            background-color: #dbeafe; /* Light blue for notes */
-            border-left: 5px solid #60a5fa; /* Thicker border */
+            background-color: #dbeafe;
+            border-left: 5px solid #60a5fa;
             padding: 1rem;
-            border-radius: 0.75rem; /* More rounded */
+            border-radius: 0.75rem;
             margin-top: 1.25rem;
             margin-bottom: 1.25rem;
             color: #1e40af;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Soft shadow */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .challenge-hint {
-            background-color: #fffbeb; /* Light yellow for hints */
+            background-color: #fffbeb;
             border-left: 4px solid #fcd34d;
             padding: 0.75rem;
             border-radius: 0.5rem;
             margin-top: 1rem;
             color: #92400e;
         }
+        .calculator-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .calculator-input-group input, .calculator-input-group select {
+            flex: 1;
+            width: auto;
+            font-size: 16px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 0;
+        }
         /* Styles for the main navigation menu */
         .main-nav-menu {
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
             margin-bottom: 30px;
             padding: 15px;
-            background-color: #ffe0e0; /* Light pink background for nav */
+            background-color: #e0f2fe;
             border-radius: 12px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .main-nav-menu button {
-            width: auto;
-            display: inline-block;
-            margin: 0 10px;
-            padding: 10px 20px;
-            background-color: #ffb6c1; /* Lighter pink for nav buttons */
-            color: #fff;
+            flex-grow: 1;
+            max-width: 200px;
+            padding: 12px 25px;
+            background: linear-gradient(to right, #60a5fa, #3b82f6);
+            color: white;
             border: none;
-            font-weight: bold;
-            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-            cursor: pointer; /* Ensure cursor pointer for buttons */
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-        .main-nav-menu button:hover {
-            background-color: #ff99aa; /* Darker pink on hover */
+        .main-nav-menu button:hover:not(:disabled) {
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.15), 0 3px 7px -2px rgba(0, 0, 0, 0.08);
+        }
+        .main-nav-menu button:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+        }
+        .main-nav-menu button:disabled {
+            background: #cbd5e1;
+            color: #64748b;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
         }
     </style>
 </head>
 <body class="p-4">
     <div class="container">
-        <h1>✨ Web Magic with JavaScript! ✨</h1>
-        <p class="text-center text-xl mb-8 text-gray-600">Welcome, future web developers! Get ready to make your webpages come alive with the power of JavaScript. In this class, we'll dive into the "brain" of the webpage and learn how to make things interactive and exciting!</p>
+        <h1>✨ Binbin's JavaScript Adventure! ✨</h1>
+        <p class="text-center text-xl mb-8 text-gray-600">Welcome, future web developers! Explore the lessons below.</p>
         <h2>Developed by Teacher Theo</h2>
 
         <!-- Main Navigation Menu -->
         <div class="main-nav-menu">
-            <button onclick="alert('You are currently viewing the Week 1 Lesson. To see Week 2, please select the "Week 2 Lesson: Basic Operators and Expressions & Challenges" document from the document list in the Canvas.')">Go to Week 1: Basics</button>
-            <button onclick="alert('To view the Week 2 Lesson, please select the "Week 2 Lesson: Basic Operators and Expressions & Challenges" document from the document list in the Canvas.')">Go to Week 2: Operators & Challenges</button>
+            <button onclick="scrollToSection('week1-section')">Go to Week 1: Basics</button>
+            <button onclick="scrollToSection('week2-section')">Go to Week 2: Operators & Challenges</button>
+            <button onclick="scrollToSection('week3-section')">Go to Week 3: (Coming Soon!)</button>
         </div>
 
-        <!-- Welcome & Warm-Up -->
-        <div class="section-card">
-            <h2>🧭 Welcome & Warm-Up</h2>
+        <!-- Week 1 Section -->
+        <div id="week1-section" class="section-card">
+            <h2 class="!mt-0">✨ Week 1: Web Magic with JavaScript Basics ✨</h2>
             <p class="text-gray-700 mb-4">Let's kick things off with a quick recap and a peek into what we'll be doing today.</p>
             <h3 class="text-gray-800">Question Time:</h3>
             <ul class="question-list text-gray-700">
@@ -205,10 +238,7 @@
                 <li>And now for the big question: <span class="font-medium">What do you think JavaScript does for a webpage?</span></li>
             </ul>
             <p class="text-gray-600 mt-4 italic">*(We'll show you a working webpage with an interactive button to spark your imagination!)*</p>
-        </div>
 
-        <!-- What is JavaScript? -->
-        <div class="section-card">
             <h2>🔹 What is JavaScript?</h2>
             <div class="note">
                 <h3 class="font-semibold text-lg mb-2">Background Note:</h3>
@@ -259,10 +289,7 @@ console.log("This message is in the console.");
                 <div id="output1" class="output-area"></div>
                 <p class="text-gray-600 text-sm mt-2">*(After running, click "OK" on the alert. For <code>console.log</code> output, check the box below. In a real browser, you'd open your browser's developer console (F12) to see it!)*</p>
             </div>
-        </div>
 
-        <!-- Hands-On Practice #1 -->
-        <div class="section-card">
             <h2>🔹 Hands-On Practice #1</h2>
             <p class="text-gray-700 mb-4">Now that you've seen basic JavaScript, let's make something happen when *you* interact with the webpage! We're going to create a button that, when clicked, runs some JavaScript code.</p>
 
@@ -305,10 +332,7 @@ function sayHi() {
                     </ul>
                 </li>
             </ul>
-        </div>
 
-        <!-- Hands-On Practice #2 -->
-        <div class="section-card">
             <h2>🔹 Hands-On Practice #2 – Let’s Personalize It!</h2>
             <p class="text-gray-700 mb-4">So far, our JavaScript has been pretty set in stone. What if we want to get information *from* the user? That's where <strong><code>prompt()</code></strong> comes in!</p>
             <ul class="list-disc ml-5 text-gray-700 mb-4">
@@ -323,7 +347,7 @@ function sayHi() {
             </div>
 
             <h3 class="text-gray-800">Step-by-Step Tutorial: Getting User Input</h3>
-            <p class="text-gray-700 mb-2">1.  <strong>Clear your editor</strong> again.</p>
+            <p class="text-700 mb-2">1.  <strong>Clear your editor</strong> again.</p>
             <p class="text-gray-700 mb-2">2.  <strong>Add the JavaScript Function:</strong> Copy the <code>greetUser</code> function below into the editor.</p>
 
             <div class="code-editor-container">
@@ -345,10 +369,7 @@ function greetUser() {
                 </p>
             </div>
             <p class="text-gray-700 mt-4 mb-2"><strong>Run and Interact!</strong> Click the "Run Code" button. When the prompt appears, type your name and press Enter/OK. See the personalized alert and check your console output!</p>
-        </div>
 
-        <!-- Mini Project -->
-        <div class="section-card">
             <h2>🔹 Mini Project: “Web Welcome App”</h2>
             <p class="text-gray-700 mb-4">Now it's time to put everything you've learned together! You're going to build your own "Web Welcome App."</p>
 
@@ -366,10 +387,7 @@ function greetUser() {
                 <li>Can you think of another simple JavaScript action you could add? (Hint: What if a button changed the text of a heading on the page? This is a bit more advanced, but you can try to look it up!)</li>
             </ul>
             <p class="text-gray-600 mt-4 italic">*(For this project, you'll combine all the HTML and JavaScript you've learned. You'll need to create a full HTML file on your computer using a text editor like VS Code, or use a comprehensive online IDE. The editors above are for practicing JavaScript snippets!)*</p>
-        </div>
 
-        <!-- Challenges Section -->
-        <div class="section-card">
             <h2>🚀 JavaScript Challenges!</h2>
             <p class="text-gray-700 mb-4">Ready for some extra fun? Here are four challenges to test your new JavaScript skills!</p>
 
@@ -386,7 +404,7 @@ function greetUser() {
             </div>
             <div class="code-editor-container">
                 <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 1:</h4>
-                <textarea id="challenge1_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+                <textarea id="week1_challenge1_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
 // HTML part (imagine this is in your HTML body):
 // <p id="dynamicMessage">Change me!</p>
 // <button onclick="changeText()">Change Text</button>
@@ -396,8 +414,8 @@ function changeText() {
   // Example: document.getElementById('dynamicMessage').innerText = "New message!";
 }
                 </textarea>
-                <button class="run-button" onclick="runChallenge1Code()">Run Code</button>
-                <div id="challenge1_output" class="output-area"></div>
+                <button class="run-button" onclick="runCode('week1_challenge1_editor', 'week1_challenge1_output')">Run Code</button>
+                <div id="week1_challenge1_output" class="output-area"></div>
                 <p class="text-gray-600 text-sm mt-2">*(To see this in action, you'd need an actual HTML paragraph with `id="dynamicMessage"` and a button calling `changeText()` in your full HTML file. This editor will just run the JS function.)*</p>
             </div>
 
@@ -417,7 +435,7 @@ function changeText() {
             </div>
             <div class="code-editor-container">
                 <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 2:</h4>
-                <textarea id="challenge2_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+                <textarea id="week1_challenge2_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
 function addNumbers() {
   // Your code here!
   // Example: let num1 = parseInt(prompt("Enter first number:"));
@@ -427,8 +445,8 @@ function addNumbers() {
   // console.log("Sum: " + sum);
 }
                 </textarea>
-                <button class="run-button" onclick="runChallenge2Code()">Run Code</button>
-                <div id="challenge2_output" class="output-area"></div>
+                <button class="run-button" onclick="runCode('week1_challenge2_editor', 'week1_challenge2_output')">Run Code</button>
+                <div id="week1_challenge2_output" class="output-area"></div>
             </div>
 
             <!-- Challenge 3: Background Color Changer -->
@@ -444,7 +462,7 @@ function addNumbers() {
             </div>
             <div class="code-editor-container">
                 <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 3:</h4>
-                <textarea id="challenge3_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+                <textarea id="week1_challenge3_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
 // HTML part (imagine these are in your HTML body):
 // <button onclick="makeBlue()">Blue Page</button>
 // <button onclick="makeGreen()">Green Page</button>
@@ -458,8 +476,8 @@ function makeGreen() {
   // Your code here!
 }
                 </textarea>
-                <button class="run-button" onclick="runChallenge3Code()">Run Code</button>
-                <div id="challenge3_output" class="output-area"></div>
+                <button class="run-button" onclick="runCode('week1_challenge3_editor', 'week1_challenge3_output')">Run Code</button>
+                <div id="week1_challenge3_output" class="output-area"></div>
                 <p class="text-gray-600 text-sm mt-2">*(This editor will define the functions. To see the background change, you'd need to manually call `makeBlue()` or `makeGreen()` in the editor after running, or integrate it with HTML buttons in a separate file.)*</p>
             </div>
 
@@ -478,7 +496,7 @@ function makeGreen() {
             </div>
             <div class="code-editor-container">
                 <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 4:</h4>
-                <textarea id="challenge4_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+                <textarea id="week1_challenge4_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
 function decodeMessage() {
   let userCode = prompt("Enter the secret code:");
   // Your if/else statement here!
@@ -490,11 +508,252 @@ function decodeMessage() {
   // }
 }
                 </textarea>
-                <button class="run-button" onclick="runChallenge4Code()">Run Code</button>
-                <div id="challenge4_output" class="output-area"></div>
+                <button class="run-button" onclick="runCode('week1_challenge4_editor', 'week1_challenge4_output')">Run Code</button>
+                <div id="week1_challenge4_output" class="output-area"></div>
             </div>
         </div>
-        <!-- End Challenges Section -->
+        <!-- End Week 1 Section -->
+
+        <!-- Week 2 Section -->
+        <div id="week2-section" class="section-card">
+            <h2 class="!mt-0">✨ Week 2: Basic Operators and Expressions ✨</h2>
+            <p>In JavaScript, operators are special symbols that perform operations on values and variables. These operations form expressions, which are pieces of code that produce a value.</p>
+            <p>Common types of operators include:</p>
+            <ul>
+                <li><strong>Arithmetic Operators</strong>: For math calculations like addition (`+`), subtraction (`-`), multiplication (`*`), and division (`/`).</li>
+                <li><strong>String Concatenation</strong>: Using the `+` operator to join two or more strings together.</li>
+                <li><strong>Assignment Operators</strong>: Like `=` to assign a value to a variable.</li>
+            </ul>
+            <p>Understanding these helps you perform simple calculations and build more complex logic!</p>
+
+            <h2>➕➖ Challenge 1: Build a Calculator!</h2>
+            <p>Let's use variables and numbers to make a simple calculator. Can you complete the `calculate` function?</p>
+            <p>Enter two numbers and choose an operation:</p>
+            <div class="calculator-input-group">
+                <input type="number" id="num1" value="10" placeholder="First Number" />
+                <select id="operation">
+                    <option value="add">+</option>
+                    <option value="subtract">-</option>
+                    <option value="multiply">*</option>
+                    <option value="divide">/</option>
+                </select>
+                <input type="number" id="num2" value="5" placeholder="Second Number" />
+            </div>
+            <textarea class="editor" id="calculatorCodeEditor">
+// Your mission: Complete the 'result' calculation based on the 'operation'!
+let number1 = parseFloat(document.getElementById("num1").value);
+let number2 = parseFloat(document.getElementById("num2").value);
+let chosenOperation = document.getElementById("operation").value;
+let result; // This variable will store our answer!
+
+// WRITE YOUR CODE BELOW THIS LINE!
+// Use 'if...else if...else' statements to check 'chosenOperation'
+// and perform the correct calculation (+, -, *, /)
+// For example:
+if (chosenOperation === "add") {
+  result = number1 + number2;
+}
+else if (chosenOperation === "subtract") {
+  result = number1 - number2;
+}
+else if (chosenOperation === "multiply") {
+  result = number1 * number2;
+}
+else if (chosenOperation === "divide") {
+  // IMPORTANT: Always check for division by zero!
+  if (number2 === 0) {
+    result = "Cannot divide by zero!";
+  } else {
+    result = number1 / number2;
+  }
+}
+// DO NOT TOUCH THE CODE BELOW THIS LINE!
+if (isNaN(number1) || isNaN(number2)) {
+    document.getElementById("calculatorOutput").innerText = "Please enter valid numbers!";
+} else {
+    document.getElementById("calculatorOutput").innerText = "Result: " + result;
+}
+            </textarea>
+            <button onclick="runCalculatorCode()" class="run-button">Calculate!</button>
+            <p id="calculatorOutput" class="output-area"></p>
+            <p class="challenge-hint">Hint: Remember the math operators: `+` for add, `-` for subtract, `*` for multiply, `/` for divide. Use `if` and `else if` statements!</p>
+        </div>
+
+        <div class="section-card">
+            <h2>🎲 Fun Example - Random Fact Builder</h2>
+            <p>Click to see a fun fact made with different variables! See how strings and booleans combine!</p>
+            <button onclick="showRandomFact()" class="run-button">Show Fun Fact</button>
+            <p id="funFactOutput" class="output-area"></p>
+        </div>
+
+        <div class="section-card">
+            <h2>🔁 Can You Swap It?</h2>
+            <p>Swapping variable values is a classic coding trick! Watch how we use a temporary variable to switch two values.</p>
+            <button onclick="swapExample()" class="run-button">Swap Values (Classic Way)</button>
+            <p id="swapOutput" class="output-area"></p>
+        </div>
+
+        <div class="section-card">
+            <h2>✨ Challenge 2 - Advanced Swap (Extra Credit!)</h2>
+            <p>Here's a more advanced way to swap variables using something called "array destructuring." Don't worry if it looks tricky, just try to understand the idea! Your task is to swap <code>valueA</code> and <code>valueB</code>.</p>
+            <textarea class="editor" id="challengeSwapEditor">
+let valueA = "Coding";
+let valueB = "Fun";
+
+// Your mission: Swap valueA and valueB using array destructuring!
+// Example: [variable1, variable2] = [variable2, variable1];
+
+// WRITE YOUR CODE BELOW THIS LINE!
+
+
+// DO NOT TOUCH THE CODE BELOW THIS LINE!
+document.getElementById("challengeSwapOutput").innerText = "After advanced swap: Value A = " + valueA + ", Value B = " + valueB;
+            </textarea>
+            <button onclick="runChallengeSwapCode()" class="run-button">Advanced Swap!</button>
+            <p id="challengeSwapOutput" class="output-area"></p>
+            <p class="challenge-hint">Hint: It's a one-liner! Think `[valueA, valueB] = [...]`</p>
+        </div>
+
+        <!-- Challenges from the provided Week 1 content (re-numbered as challenges for Week 2) -->
+        <div class="section-card">
+            <h2>🚀 More JavaScript Challenges!</h2>
+            <p class="text-gray-700 mb-4">Here are some additional challenges to test your JavaScript skills!</p>
+
+            <!-- Challenge 3: Dynamic Message Changer -->
+            <h3>Challenge 3: Dynamic Message Changer</h3>
+            <p class="text-gray-700 mb-2">Can you make a button that changes the text of a specific part of your webpage?</p>
+            <ul class="question-list text-gray-700">
+                <li>Imagine you have an HTML element like: <code>&lt;p id="message"&gt;Hello World!&lt;/p&gt;</code></li>
+                <li>Your task is to write a JavaScript function that, when called, changes the text inside this <code>&lt;p&gt;</code> tag to something new, like "JavaScript is Awesome!".</li>
+            </ul>
+            <div class="challenge-hint">
+                <p class="font-semibold">Hint:</p>
+                <p>You'll need to use <code>document.getElementById('your-id-here')</code> to find the HTML element, and then change its <code>.innerText</code> property.</p>
+            </div>
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 3:</h4>
+                <textarea id="week2_challenge3_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+// HTML part (imagine this is in your HTML body):
+// <p id="dynamicMessage">Change me!</p>
+// <button onclick="changeText()">Change Text</button>
+
+function changeText() {
+  // Your code here!
+  // Example: document.getElementById('dynamicMessage').innerText = "New message!";
+}
+                </textarea>
+                <button class="run-button" onclick="runCode('week2_challenge3_editor', 'week2_challenge3_output')">Run Code</button>
+                <div id="week2_challenge3_output" class="output-area"></div>
+                <p class="text-gray-600 text-sm mt-2">*(To see this in action, you'd need an actual HTML paragraph with `id="dynamicMessage"` and a button calling `changeText()` in your full HTML file. This editor will just run the JS function.)*</p>
+            </div>
+
+            <!-- Challenge 4: Simple Calculator (Addition) -->
+            <h3 class="mt-8">Challenge 4: Simple Calculator (Addition)</h3>
+            <p class="text-gray-700 mb-2">Let's build a mini-calculator that adds two numbers!</p>
+            <ul class="question-list text-gray-700">
+                <li>Write a JavaScript function that:</li>
+                <li>Uses <code>prompt()</code> twice to ask the user for two numbers.</li>
+                <li>Adds these two numbers together.</li>
+                <li>Uses <code>alert()</code> to show the sum to the user.</li>
+                <li>Uses <code>console.log()</code> to also print the sum.</li>
+            </ul>
+            <div class="challenge-hint">
+                <p class="font-semibold">Hint:</p>
+                <p>Remember that <code>prompt()</code> always returns text! You'll need to convert the text numbers into actual numbers using <code>parseInt()</code> or <code>Number()</code> before adding them. Example: <code>let num1 = parseInt(prompt("Enter first number:"));</code></p>
+            </div>
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 4:</h4>
+                <textarea id="week2_challenge4_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+function addNumbers() {
+  // Your code here!
+  // Example: let num1 = parseInt(prompt("Enter first number:"));
+  // let num2 = parseInt(prompt("Enter second number:"));
+  // let sum = num1 + num2;
+  // alert("The sum is: " + sum);
+  // console.log("Sum: " + sum);
+}
+                </textarea>
+                <button class="run-button" onclick="runCode('week2_challenge4_editor', 'week2_challenge4_output')">Run Code</button>
+                <div id="week2_challenge4_output" class="output-area"></div>
+            </div>
+
+            <!-- Challenge 5: Background Color Changer -->
+            <h3 class="mt-8">Challenge 5: Background Color Changer</h3>
+            <p class="text-gray-700 mb-2">Make buttons that change the background color of the entire page!</p>
+            <ul class="question-list text-gray-700">
+                <li>Write a JavaScript function for each color (e.g., <code>makeBlue()</code>, <code>makeGreen()</code>).</li>
+                <li>Inside each function, change the <code>document.body.style.backgroundColor</code> to a different color (e.g., "lightblue", "lightgreen", "pink").</li>
+            </ul>
+            <div class="challenge-hint">
+                <p class="font-semibold">Hint:</p>
+                <p>The <code>document.body</code> refers to the entire <code>&lt;body&gt;</code> of your HTML page. You can set its style properties directly, like: <code>document.body.style.backgroundColor = "red";</code></p>
+            </div>
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 5:</h4>
+                <textarea id="week2_challenge5_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+// HTML part (imagine these are in your HTML body):
+// <button onclick="makeBlue()">Blue Page</button>
+// <button onclick="makeGreen()">Green Page</button>
+
+function makeBlue() {
+  // Your code here!
+  // Example: document.body.style.backgroundColor = "lightblue";
+}
+
+function makeGreen() {
+  // Your code here!
+}
+                </textarea>
+                <button class="run-button" onclick="runCode('week2_challenge5_editor', 'week2_challenge5_output')">Run Code</button>
+                <div id="week2_challenge5_output" class="output-area"></div>
+                <p class="text-gray-600 text-sm mt-2">*(This editor will define the functions. To see the background change, you'd need to manually call `makeBlue()` or `makeGreen()` in the editor after running, or integrate it with HTML buttons in a separate file.)*</p>
+            </div>
+
+            <!-- Challenge 6: Secret Message Decoder -->
+            <h3 class="mt-8">Challenge 6: Secret Message Decoder</h3>
+            <p class="text-gray-700 mb-2">Create a secret message that only appears if the user knows the correct code!</p>
+            <ul class="question-list text-gray-700">
+                <li>Write a JavaScript function that:</li>
+                <li>Uses <code>prompt()</code> to ask the user for a "secret code".</li>
+                <li>If the entered code is exactly "MAGIC", then <code>console.log()</code> a secret message (e.g., "You found the treasure!").</li>
+                <li>Otherwise (if the code is wrong), <code>console.log()</code> "Access Denied!".</li>
+            </ul>
+            <div class="challenge-hint">
+                <p class="font-semibold">Hint:</p>
+                <p>You'll need an <strong><code>if</code> statement</strong> to check if the code is correct. Example: <code>if (userCode === "MAGIC") { ... } else { ... }</code></p>
+            </div>
+            <div class="code-editor-container">
+                <h4 class="font-semibold text-gray-800 mb-2">Your Code for Challenge 6:</h4>
+                <textarea id="week2_challenge6_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500" spellcheck="false">
+function decodeMessage() {
+  let userCode = prompt("Enter the secret code:");
+  // Your if/else statement here!
+  // Example:
+  // if (userCode === "MAGIC") {
+  //   console.log("You found the treasure!");
+  // } else {
+  //   console.log("Access Denied!");
+  // }
+}
+                </textarea>
+                <button class="run-button" onclick="runCode('week2_challenge6_editor', 'week2_challenge6_output')">Run Code</button>
+                <div id="week2_challenge6_output" class="output-area"></div>
+            </div>
+        </div>
+        <!-- End Week 2 Section -->
+
+        <!-- Week 3 Placeholder Section -->
+        <div id="week3-section" class="section-card">
+            <h2 class="!mt-0">🚧 Week 3: Coming Soon! 🚧</h2>
+            <p class="text-gray-700">Get ready for more JavaScript adventures in Week 3! We'll explore exciting new topics.</p>
+            <ul class="list-disc ml-5 text-gray-700">
+                <li>More advanced control flow (loops!)</li>
+                <li>Introduction to Arrays</li>
+                <li>Working with HTML elements more dynamically</li>
+            </ul>
+            <p class="text-gray-600 mt-4 italic">Stay tuned!</p>
+        </div>
+        <!-- End Week 3 Placeholder Section -->
 
 
         <!-- Sharing & Feedback -->
@@ -541,6 +800,11 @@ function decodeMessage() {
     </div>
 
     <script>
+        // Function to scroll to a specific section by its ID
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
         // Function to run code from the textarea and display output
         function runCode(editorId, outputId) {
             const code = document.getElementById(editorId).value;
@@ -589,20 +853,8 @@ function decodeMessage() {
             }
         }
 
-        // Wrapper functions for specific buttons, calling the general runCode
-        function runChallenge1Code() { runCode('challenge1_editor', 'challenge1_output'); }
-        function runChallenge2Code() { runCode('challenge2_editor', 'challenge2_output'); }
-        function runChallenge3Code() { runCode('challenge3_editor', 'challenge3_output'); }
-        function runChallenge4Code() { runCode('challenge4_editor', 'challenge4_output'); }
-
-        // Placeholder for functions that would interact with the main page, not just the editor.
-        // These are included for completeness based on the lesson content, but won't directly
-        // impact the editor's output area unless explicitly modified within the editor code.
+        // Specific functions for Week 1 content (renamed IDs to avoid conflicts)
         function sayHi() {
-            // This function is part of the Week 1 lesson's conceptual explanation.
-            // In a real integrated page, it would interact with HTML elements.
-            // For this isolated lesson, it would typically be called via the editor.
-            // To make it work here, we'll simulate the prompt/alert.
             const name = prompt("What is your name?");
             if (name) {
                 alert("Hello, " + name + "! You're a coding star 🌟!");
@@ -614,16 +866,89 @@ function decodeMessage() {
         }
 
         function greetUser() {
-            // This is the function from "Hands-On Practice #2"
-            let name = prompt("What is your name?"); // Asks the user for their name and stores it in the 'name' variable
+            let name = prompt("What is your name?");
             if (name) {
-                alert("Hello, " + name + "!"); // Uses the stored name in an alert
-                console.log("User greeted: " + name); // Logs the greeting to the console
+                alert("Hello, " + name + "!");
+                console.log("User greeted: " + name);
             } else {
                 alert("Looks like you skipped entering a name!");
                 console.log("User canceled prompt.");
             }
         }
+
+        // Specific functions for Week 2 content
+        function runCalculatorCode() {
+            let number1 = parseFloat(document.getElementById("num1").value);
+            let number2 = parseFloat(document.getElementById("num2").value);
+            let chosenOperation = document.getElementById("operation").value;
+            let result;
+
+            if (chosenOperation === "add") {
+              result = number1 + number2;
+            } else if (chosenOperation === "subtract") {
+              result = number1 - number2;
+            } else if (chosenOperation === "multiply") {
+              result = number1 * number2;
+            } else if (chosenOperation === "divide") {
+              if (number2 === 0) {
+                result = "Cannot divide by zero!";
+              } else {
+                result = number1 / number2;
+              }
+            }
+
+            if (isNaN(number1) || isNaN(number2)) {
+                document.getElementById("calculatorOutput").innerText = "Please enter valid numbers!";
+            } else {
+                document.getElementById("calculatorOutput").innerText = "Result: " + result;
+            }
+        }
+
+        function showRandomFact() {
+            let animal = "super-intelligent dolphin";
+            let food = "galactic pizza";
+            let lovesCoding = true;
+
+            let funFact = "Did you know a " + animal + " once ate " + food + "? " +
+                          "It's " + lovesCoding + " that coding is awesome!";
+            document.getElementById("funFactOutput").innerText = funFact;
+        }
+
+        function swapExample() {
+            let first = "🌞 Sun";
+            let second = "🌛 Moon";
+            let before = "Before swap: First = " + first + ", Second = " + second;
+
+            let temp = first;
+            first = second;
+            second = temp;
+
+            let after = "After swap: First = " + first + ", Second = " + second;
+
+            document.getElementById("swapOutput").innerText = before + "\n" + after;
+        }
+
+        function runChallengeSwapCode() {
+            let valueA = "Coding";
+            let valueB = "Fun";
+
+            // The actual solution for the challenge
+            [valueA, valueB] = [valueB, valueA];
+
+            document.getElementById("challengeSwapOutput").innerText = "After advanced swap: Value A = " + valueA + ", Value B = " + valueB;
+        }
+
+        // Renamed challenge functions to avoid ID conflicts with Week 1's original challenges
+        function runWeek1Challenge1Code() { runCode('week1_challenge1_editor', 'week1_challenge1_output'); }
+        function runWeek1Challenge2Code() { runCode('week1_challenge2_editor', 'week1_challenge2_output'); }
+        function runWeek1Challenge3Code() { runCode('week1_challenge3_editor', 'week1_challenge3_output'); }
+        function runWeek1Challenge4Code() { runCode('week1_challenge4_editor', 'week1_challenge4_output'); }
+
+        function runWeek2Challenge3Code() { runCode('week2_challenge3_editor', 'week2_challenge3_output'); }
+        function runWeek2Challenge4Code() { runCode('week2_challenge4_editor', 'week2_challenge4_output'); }
+        function runWeek2Challenge5Code() { runCode('week2_challenge5_editor', 'week2_challenge5_output'); }
+        function runWeek2Challenge6Code() { runCode('week2_challenge6_editor', 'week2_challenge6_output'); }
+
     </script>
 </body>
 </html>
