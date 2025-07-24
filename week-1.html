@@ -738,7 +738,42 @@ function decodeMessage() {
                 </textarea>
                 <button class="run-button" onclick="runCode('week2_challenge6_editor', 'week2_challenge6_output')">Run Code</button>
                 <div id="week2_challenge6_output" class="output-area"></div>
-            </div>
+            </div><!-- Challenge: Simple Expenses Manager -->
+<h3 class="mt-8">Challenge: Simple Expenses Manager</h3>
+<p class="text-gray-700 mb-2">
+Can you build a simple expenses manager? The user will enter expense amounts one by one (using <code>prompt()</code>). When the user types "done", show the total expense!
+</p>
+<ul class="question-list text-gray-700">
+    <li>Use a <code>while</code> loop to keep asking for expenses until the user enters "done".</li>
+    <li>Add each expense to a <strong>total</strong> variable.</li>
+    <li>Show the total using <code>alert()</code> and <code>console.log()</code> at the end.</li>
+</ul>
+<div class="challenge-hint">
+    <p class="font-semibold">Hint:</p>
+    <p>Use <code>Number()</code> to convert each expense from text to a number, and <code>while</code> to keep looping!</p>
+</div>
+<div class="code-editor-container">
+    <h4 class="font-semibold text-gray-800 mb-2">Your Code for Expenses Manager:</h4>
+    <textarea id="expenses_manager_editor" class="w-full min-h-[180px] bg-white border border-gray-300 rounded-lg p-3 text-sm font-mono focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+// Simple Expenses Manager
+let total = 0;
+while (true) {
+  let input = prompt("Enter an expense amount, or type 'done' to finish:");
+  if (input === "done") {
+    break;
+  }
+  let amount = Number(input);
+  if (!isNaN(amount) && amount > 0) {
+    total += amount;
+  }
+}
+alert("Your total expenses: $" + total);
+console.log("Total expenses: $" + total);
+    </textarea>
+    <button class="run-button" onclick="runCode('expenses_manager_editor', 'expenses_manager_output')">Run Code</button>
+    <div id="expenses_manager_output" class="output-area"></div>
+</div>
+            
         </div>
         <!-- End Week 2 Section -->
 
